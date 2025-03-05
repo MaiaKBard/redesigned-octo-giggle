@@ -100,7 +100,7 @@ RSpec.describe Market do
       @market.add_vendor(@vendor3)
       expect(@market.vendors).to eq([@vendor1, @vendor2, @vendor3])
 
-      expect(@market.total_inventory).to eq(@item1)
+      expect(@market.overstocked_items).to eq([@item1])
     end
   end
 end 

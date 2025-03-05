@@ -35,4 +35,10 @@ class Market
     end
     inventory
   end
+
+  def overstocked_items
+    total_inventory.select do |item, info|
+      info[:vendors].size > 1 && info[:quantity] > 50
+    end.keys
+  end
 end
