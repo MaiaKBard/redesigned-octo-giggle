@@ -82,14 +82,25 @@ RSpec.describe Market do
       expect(@market.vendors).to eq([@vendor1, @vendor2, @vendor3])
 
       expected_output = {
-        @item1 => {quantity: 100, vendors: [@vendor1, @vendor3]}
-        @item2 => {quantity: 7, vendors: [@vendor1]}
-        @item3 => {quantity: 25, vendors: [@vendor2]}
+        @item1 => {quantity: 100, vendors: [@vendor1, @vendor3]},
+        @item2 => {quantity: 7, vendors: [@vendor1]},
+        @item3 => {quantity: 25, vendors: [@vendor2]},
         @item4 => {quantity: 50, vendors: [@vendor2]}
       }
 
       expect(@market.total_inventory).to eq(expected_output)
-     
+    end
+  end
+
+  describe '#overstocked_items' do
+    it 'can identify items that are overstocked' do
+      expect(@market.vendors).to eq([])
+      @market.add_vendor(@vendor1) 
+      @market.add_vendor(@vendor2) 
+      @market.add_vendor(@vendor3)
+      expect(@market.vendors).to eq([@vendor1, @vendor2, @vendor3])
+
+      expect(@market.total_inventory).to eq(@item1)
     end
   end
 end 
