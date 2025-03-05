@@ -6,7 +6,7 @@ RSpec.configure do |config|
   config.formatter = :documentation
 end
 
-RSpec.describe Market do
+XRSpec.describe Market do
   before(:each) do
     @market = Market.new("South Pearl Street Farmers Market")
     @vendor1 = Vendor.new("Rocky Mountain Fresh")
