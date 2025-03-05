@@ -61,7 +61,7 @@ RSpec.describe Market do
     end
   end
 
-  xdescribe '#vendors_that_sell' do
+  describe '#vendors_that_sell' do
     it 'can find vendors that sell a specific item' do
       expect(@market.vendors).to eq([])
       @market.add_vendor(@vendor1) 
