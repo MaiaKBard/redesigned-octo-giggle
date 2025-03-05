@@ -25,7 +25,7 @@ RSpec.describe Market do
 
     @vendor3.stock(@item1, 65) 
   end
-  
+
   describe 'initialize' do
     it 'exsists' do
       expect(@market).to be_a(Market)
@@ -39,13 +39,13 @@ RSpec.describe Market do
     end
   end
 
- xdescribe '#add_vendor' do
+ describe '#add_vendor' do
     it 'can add vendors into the market vendors' do
-      expect(@vendor.vendors).to eq([])
+      expect(@market.vendors).to eq([])
       @market.add_vendor(@vendor1) 
       @market.add_vendor(@vendor2) 
       @market.add_vendor(@vendor3)
-      expect(@vendor.vendors).to eq([@vendor1, @vendor2, @vendor3])
+      expect(@market.vendors).to eq([@vendor1, @vendor2, @vendor3])
     end
   end
 

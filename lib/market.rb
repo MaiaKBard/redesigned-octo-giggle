@@ -5,4 +5,6 @@ class Market
     @name = name
     @vendors = []
   end
+
+  def 
 end
