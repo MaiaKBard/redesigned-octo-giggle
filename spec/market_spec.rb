@@ -6,7 +6,7 @@ RSpec.configure do |config|
   config.formatter = :documentation
 end
 
-XRSpec.describe Market do
+RSpec.describe Market do
   before(:each) do
     @market = Market.new("South Pearl Street Farmers Market")
     @vendor1 = Vendor.new("Rocky Mountain Fresh")
@@ -25,13 +25,14 @@ XRSpec.describe Market do
 
     @vendor3.stock(@item1, 65) 
   end
-  xdescribe 'initialize' do
+  
+  describe 'initialize' do
     it 'exsists' do
       expect(@market).to be_a(Market)
     end
   end
 
-  xdescribe 'attributes' do
+  describe 'attributes' do
     it 'has a name and can have vendors' do
       expect(@market.name).to eq("South Pearl Street Farmers Market")
       expect(@market.vendors).to eq([])
