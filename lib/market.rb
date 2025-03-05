@@ -41,4 +41,18 @@ class Market
       info[:vendors].size > 1 && info[:quantity] > 50
     end.keys
   end
+
+  def sorted_item_list
+    item_names = []
+
+    @vendors.each do |vendor|
+      inventory = vendor.inventory
+      items = inventory.keys
+
+      items.each do |item|
+        item_names << item.name
+      end
+    end
+    item_names.uniq.sort
+  end
 end
