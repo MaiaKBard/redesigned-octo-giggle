@@ -1,5 +1,4 @@
 require './lib/item'
-require './lib/vendor'
 
 RSpec.configure do |config|
   config.formatter = :documentation
@@ -20,9 +19,9 @@ RSpec.describe Item do
   describe 'attributes' do
     it 'has a name and a cost' do
       expect(@item1.name).to eq("Peach")
-      expect(@item1.price).to eq("$0.75")
+      expect(@item1.price).to eq(0.75)
       expect(@item2.name).to eq("Tomato")
-      expect(@item2.price).to eq("$0.50")
+      expect(@item2.price).to eq(0.5)
     end
   end
 end 
