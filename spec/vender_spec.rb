@@ -32,7 +32,7 @@ RSpec.describe Vendor do
 
   describe '#stock' do
     it 'can stock items and update inventory' do
-      @vendor.stock(@item, 30)
+      @vendor.stock(@item1, 30)
 
       expect(@vendor.inventory).to eq({@item1 => 30})
       expect(@vendor.check_stock(@item1)).to eq(30)
