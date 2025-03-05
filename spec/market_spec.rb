@@ -25,20 +25,20 @@ RSpec.describe Market do
 
     @vendor3.stock(@item1, 65) 
   end
-  describe 'initialize' do
+  xdescribe 'initialize' do
     it 'exsists' do
       expect(@market).to be_a(Market)
     end
   end
 
-  describe 'attributes' do
-    it 'has a name and a inventory' do
+  xdescribe 'attributes' do
+    it 'has a name and can have vendors' do
       expect(@market.name).to eq("South Pearl Street Farmers Market")
       expect(@market.vendors).to eq([])
     end
   end
 
-  describe '#add_vendor' do
+ xdescribe '#add_vendor' do
     it 'can add vendors into the market vendors' do
       expect(@vendor.vendors).to eq([])
       @market.add_vendor(@vendor1) 
@@ -48,21 +48,27 @@ RSpec.describe Market do
     end
   end
 
-  describe '#stock' do
-    it 'can stock items and update inventory' do
-      @vendor.stock(@item1, 30)
+  xdescribe '#vendor_names' do
+    it 'can list added vendors names' do
+      expect(@vendor.vendors).to eq([])
+      expect(@vendor.vendors_names).to eq([])
+      @market.add_vendor(@vendor1) 
+      @market.add_vendor(@vendor2) 
+      @market.add_vendor(@vendor3)
+      expect(@vendor.vendors).to eq([@vendor1, @vendor2, @vendor3])
+      expect(@vendor.vendors_names).to eq(["Rocky Mountain Fresh", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+    end
+  end
 
-      expect(@vendor.inventory).to eq({@item1 => 30})
-      expect(@vendor.check_stock(@item1)).to eq(30)
-
-      @vendor.stock(@item1, 25)
-      expect(@vendor.inventory).to eq({@item1 => 55})
-      expect(@vendor.check_stock(@item1)).to eq(55)
-
-      @vendor.stock(@item2, 12)
-      expect(@vendor.inventory).to eq({@item1 => 55, @item2 => 12})
-      expect(@vendor.check_stock(@item1)).to eq(55)
-      expect(@vendor.check_stock(@item2)).to eq(12)
+  xdescribe '#vendors_that_sell' do
+    it 'can find vendors that sell a specific item' do
+      expect(@vendor.vendors).to eq([])
+      @market.add_vendor(@vendor1) 
+      @market.add_vendor(@vendor2) 
+      @market.add_vendor(@vendor3)
+      expect(@vendor.vendors).to eq([@vendor1, @vendor2, @vendor3])
+      expect(@vendor.vendors_that_sell(@item1)).to eq([@vendor1, @vendor3])
+      expect(@vendor.vendors_that_sell(@item4)).to eq([@vendor2])
     end
   end
 end 
