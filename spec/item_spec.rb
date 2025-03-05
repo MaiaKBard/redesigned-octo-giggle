@@ -17,7 +17,7 @@ RSpec.describe Item do
   end
 
   describe 'attributes' do
-    it 'has a name and a cost' do
+    it 'has a name and a price' do
       expect(@item1.name).to eq("Peach")
       expect(@item1.price).to eq(0.75)
       expect(@item2.name).to eq("Tomato")
